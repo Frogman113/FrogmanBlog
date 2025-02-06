@@ -1,6 +1,5 @@
 export type CollectionName = "blog" | "projects" | "talks";
 
-
 export type GlobalSite = {
   title: string;
   description: string;
@@ -13,26 +12,25 @@ export type GlobalSite = {
 };
 
 export const GLOBAL: GlobalSite = {
-  title: "Astro Milidev",
-  description: "a minimalistic blog+portfolio Astro theme",
-  author: "John Doe",
+  title: "Frog Blog",
+  description: "Frogman Blog Welcome",
+  author: "DongHyun Kim",
   authorPhotoSrc: "/johndoe.png",
   logo: {
     darkThemeSrc: "/logo/logo_dark.png",
     lightThemeSrc: "/logo/logo_light.png",
-  }
+  },
 };
 
-
-type CollectionSite =  {
+type CollectionSite = {
   pageSize: number;
 };
 
-type HomeSite =  {
+type HomeSite = {
   blogEntries?: number;
   projectEntries?: number;
   talkEntries?: number;
-}
+};
 
 export const HOME: HomeSite = {
   blogEntries: 5,
@@ -44,7 +42,7 @@ type BlogSite = CollectionSite & {
   license: {
     name: string;
     href: string;
-  }
+  };
 };
 
 export const BLOG: BlogSite = {
@@ -71,20 +69,15 @@ type ContactInfo = {
   type: string;
   href: string;
   displayAs?: string;
-}
+};
 
-type ContactSite = ContactInfo[]
+type ContactSite = ContactInfo[];
 
 export const CONTACT: ContactSite = [
   {
     type: "Email",
-    href: "mailto:email@example.com",
-    displayAs: "email@example.com",
-  },
-  {
-    type: "X",
-    href: "https://x.com/BillGates",
-    displayAs: "@BillGates on X",
+    href: "mailto:bainstud13@gmail.com",
+    displayAs: "bainstud13@gmail.com",
   },
   {
     type: "GitHub",
