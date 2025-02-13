@@ -19,7 +19,7 @@ import { GLOBAL } from "@consts";
           )) || <div class="font-semibold">{GLOBAL.title}</div>
         }
       </TextLink>
-      <nav class="flex items-center gap-1 text-sm">
+      <nav class="flex items-center gap-3 text-sm font-bold">
         <TextLink href={resolvePath("/blog", Astro.url.pathname)}>Blog</TextLink>
         <span>{`|`}</span>
         <TextLink href="https://github.com/Frogman113" external={true}>GitHub</TextLink>
@@ -45,7 +45,7 @@ import { GLOBAL } from "@consts";
               fill="currentColor"
             ></path>
           </svg>
-          &nbsp;search
+          &nbsp;Search
         </button>
       </nav>
     </div>
