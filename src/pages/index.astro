@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import { HOME, GLOBAL, type CollectionName } from "@consts";
+import { HOME, GLOBAL } from "@consts";
 import BlogCardButton from "@components/BlogCardButton.astro";
 import TextLink from "@components/TextLink.astro";
 import type { CollectionEntry } from "astro:content";
@@ -9,15 +9,13 @@ import { getFilteredCollectionEntries, resolvePath } from "@lib/utils";
 import Bio from "../components/Bio.astro";
 import Contact from "@components/Contact.astro";
 
-async function getCollectionEntries<T extends CollectionName>(
-  collectionName: T,
-  maxItems: number,
-): Promise<CollectionEntry<T>[]> {
-  const { entries } = await getFilteredCollectionEntries(collectionName);
-  return entries.slice(0, maxItems);
+async function getCollectionEntries(maxItems: number): Promise<CollectionEntry<"blog">[]> {
+  const entries = await getFilteredCollectionEntries();
+  console.log("🔍 Debugging getFilteredCollectionEntries result:", entries);
+  return Array.isArray(entries) ? entries.slice(0, maxItems) : [];
 }
 
-const blog = await getCollectionEntries("blog", HOME.blogEntries ?? 0);
+const blog = await getCollectionEntries(HOME.blogEntries ?? 0);
 ---
 
 <Layout>

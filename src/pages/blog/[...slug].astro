@@ -15,16 +15,14 @@ import BlogAuthor from "../../components/BlogAuthor.astro";
 import EntryHeader from "@components/EntryHeader.astro";
 
 export async function getStaticPaths() {
-  const { entries } = await getFilteredCollectionEntries("blog");
+  const entries = await getFilteredCollectionEntries();
   return entries.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
 }
-const { prevPost, nextPost } = await getNavigationEntries(
-  "blog",
-  Astro.params.slug,
-);
+
+const { prevPost, nextPost } = await getNavigationEntries(Astro.params.slug);
 
 const entry = Astro.props;
 const { Content, headings } = await entry.render();

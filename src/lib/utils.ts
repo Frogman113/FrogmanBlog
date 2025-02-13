@@ -1,7 +1,6 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { CollectionName } from "@consts";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,9 +17,9 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`;
 }
 
-export function sortByLastUpdateDate<T extends CollectionName>(
-  a: CollectionEntry<T>,
-  b: CollectionEntry<T>,
+export function sortByLastUpdateDate(
+  a: CollectionEntry<"blog">,
+  b: CollectionEntry<"blog">,
 ) {
   return (
     (b.data.lastUpdateDate ?? b.data.date).getTime() -
@@ -28,27 +27,25 @@ export function sortByLastUpdateDate<T extends CollectionName>(
   );
 }
 
-export async function getFilteredCollectionEntries<T extends "blog">(
-  collectionName: T,
-): Promise<{
-  entries: CollectionEntry<T>[];
-}> {
-  const data = (await getCollection(collectionName))
-    .filter((post: CollectionEntry<T>) => !post.data.draft)
+export async function getFilteredCollectionEntries(): Promise<
+  CollectionEntry<"blog">[]
+> {
+  return (await getCollection("blog"))
+    .filter((post) => !post.data.draft)
     .sort(sortByLastUpdateDate);
-
-  return { entries: data };
 }
 
-export async function getNavigationEntries<T extends "blog">(
-  collectionName: T,
+export async function getNavigationEntries(
   referenceSlug: string | undefined,
-): Promise<{ nextPost?: CollectionEntry<T>; prevPost?: CollectionEntry<T> }> {
+): Promise<{
+  nextPost?: CollectionEntry<"blog">;
+  prevPost?: CollectionEntry<"blog">;
+}> {
   if (!referenceSlug) {
     return {};
   }
 
-  const { entries } = await getFilteredCollectionEntries(collectionName);
+  const entries = await getFilteredCollectionEntries();
   const currentIndex = entries.findIndex(
     (entry) => entry.slug === referenceSlug,
   );
@@ -102,9 +99,7 @@ export function formatDateWithLastUpdateDate(
 }
 
 export async function getAllEntriesWithTags() {
-  const entries = (await getFilteredCollectionEntries("blog")).entries.sort(
-    sortByLastUpdateDate,
-  );
+  const entries = await getFilteredCollectionEntries();
 
   const tags = [
     ...new Set(entries.flatMap((entry) => entry.data.tags || [])),
