@@ -12,7 +12,7 @@ export type GlobalSite = {
 };
 
 export const GLOBAL: GlobalSite = {
-  title: "Frog Blog",
+  title: "Frogman",
   description: "Frogman Blog Welcome",
   author: "DongHyun Kim",
   authorPhotoSrc: "/sealfrog.png",
@@ -60,6 +60,7 @@ export const TAGS: CollectionSite = {
 type ContactInfo = {
   type: string;
   href: string;
+  rel?: string;
   displayAs?: string;
 };
 
@@ -73,10 +74,7 @@ export const CONTACT: ContactSite = [
   },
   {
     type: "GitHub",
-    href: "https://github.com/dotnet",
-  },
-  {
-    type: "LinkedIn",
-    href: "https://www.linkedin.com/in/williamhgates/",
+    href: "https://github.com/Frogman113",
+    rel: "noopener noreferrer",
   },
 ];
