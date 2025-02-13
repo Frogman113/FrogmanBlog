@@ -31,7 +31,7 @@ const anyProjects =
       </TextLink>
       <nav class="flex items-center gap-1 text-sm">
         <TextLink href={resolvePath("/hire-me", Astro.url.pathname)}
-          >hire me</TextLink
+          >Home</TextLink
         >
         {" "}
         {
@@ -39,7 +39,7 @@ const anyProjects =
             <>
               <span>{`|`}</span>
               <TextLink href={resolvePath("/blog", Astro.url.pathname)}>
-                blog
+                Blog
               </TextLink>
             </>
           )
@@ -48,8 +48,8 @@ const anyProjects =
           anyTalks && (
             <>
               <span>{`|`}</span>
-              <TextLink href={resolvePath("/talks", Astro.url.pathname)}>
-                talks
+              <TextLink href="https://github.com/Frogman113" external={true}>
+                GitHub
               </TextLink>
             </>
           )
@@ -58,8 +58,8 @@ const anyProjects =
           anyProjects && (
             <>
               <span>{`|`}</span>
-              <TextLink href={resolvePath("/projects", Astro.url.pathname)}>
-                projects
+              <TextLink href="mailto:bainstud13@gmail.com">
+                Email
               </TextLink>
             </>
           )
