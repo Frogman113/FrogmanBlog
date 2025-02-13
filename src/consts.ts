@@ -1,4 +1,4 @@
-export type CollectionName = "blog" | "projects" | "talks";
+export type CollectionName = "blog" | "GitHub" | "Email";
 
 export type GlobalSite = {
   title: string;
@@ -15,7 +15,7 @@ export const GLOBAL: GlobalSite = {
   title: "Frog Blog",
   description: "Frogman Blog Welcome",
   author: "DongHyun Kim",
-  authorPhotoSrc: "/johndoe.png",
+  authorPhotoSrc: "/sealfrog.png",
   logo: {
     darkThemeSrc: "/logo/logo_dark.png",
     lightThemeSrc: "/logo/logo_light.png",
@@ -51,14 +51,6 @@ export const BLOG: BlogSite = {
     name: "CC BY-NC-ND 4.0",
     href: "https://creativecommons.org/licenses/by-nc-nd/4.0",
   },
-};
-
-export const PROJECTS: CollectionSite = {
-  pageSize: 10,
-};
-
-export const TALKS: CollectionSite = {
-  pageSize: 10,
 };
 
 export const TAGS: CollectionSite = {
